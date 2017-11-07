@@ -15,7 +15,7 @@ COPY supervisor.conf /etc/supervisor/conf.d/programs.conf
 
 # Add nginx config
 ADD nginx.conf /etc/nginx/nginx.conf
-RUN mkdir -p /root/.bitcoin && ln -s /etc/bitcoin/bitcoin.conf /root/.bitcoin/bitcoin.conf
+RUN mkdir -p /root/.bitcoin && ln -s /etc/bitcoind/bitcoin.conf /root/.bitcoin/bitcoin.conf
 
 EXPOSE 443
 ENV PATH "/opt/bitcoind/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
