@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: bitcoind
-          image: arilot/bitcoind
+          image: kuberstack/bitcoind
           imagePullPolicy: Always
           ports:
             - containerPort: 443
