@@ -10,7 +10,7 @@ Bitcoind with SSL support
 ### Prepare config
 
     PASSWORD=`pwgen -nB 10 1`
-    tee bitcoind.conf << EOF
+    tee bitcoin.conf << EOF
     server=1
     rpcallowip=0.0.0.0/0
     rpcuser=rpcuser
@@ -19,7 +19,7 @@ Bitcoind with SSL support
 
 ### Create confir files and deploy certs
 
-    kubectl create secret generic bitcoind-conf --from-file=bitcoind.conf
+    kubectl create secret generic bitcoind-conf --from-file=bitcoin.conf
     kubectl create secret generic bitcoind-ssl --from-file=server.crt --from-file=server.key
     
     git clone https://github.com/kuberstack/bitcoind
