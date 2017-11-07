@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  labels:
+    name: bitcoind
+    app: bitcoind
+  name: bitcoind
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: bitcoind
+    spec:
+      containers:
+        - name: bitcoind
+          image: arilot/bitcoind
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 443
+              name: bitcoind-rpc
+          volumeMounts:
+            - mountPath: /srv/bitcoind
+              name: bitcoind-pvc
+            - mountPath: /etc/bitcoind
+              name: bitcoind-conf
+              readOnly: true
+            - mountPath: /etc/bitcoind-ssl
+              name: bitcoind-ssl
+              readOnly: true
+          resources:
+            requests:
+              cpu: 0.5
+              memory: 512Mi
+            limits:
+              cpu: 4
+              memory: 10000Mi
+      volumes:
+        - name: bitcoind-pvc
+          persistentVolumeClaim:
+            claimName: bitcoind-pvc
+        - name: bitcoind-conf
+          secret:
+            secretName: bitcoind-conf
+        - name: bitcoind-ssl
+          secret:
+            secretName: bitcoind-ssl
