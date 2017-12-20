@@ -20,7 +20,7 @@ spec:
             - containerPort: 443
               name: bitcoind-rpc
           volumeMounts:
-            - mountPath: /srv/bitcoind
+            - mountPath: /root
               name: bitcoind-pvc
             - mountPath: /etc/bitcoind
               name: bitcoind-conf
