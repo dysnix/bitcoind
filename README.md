@@ -17,7 +17,7 @@ Bitcoind with SSL support
     rpcpassword=$PASSWORD
     EOF
 
-### Create confir files and deploy certs
+### Create config files and deploy certs
 
     kubectl create secret generic bitcoind-conf --from-file=bitcoin.conf
     kubectl create secret generic bitcoind-ssl --from-file=server.crt --from-file=server.key
